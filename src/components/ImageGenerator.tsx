@@ -22,7 +22,7 @@ const ImageGenerator = ({ session }: { session: any }) => {
       const token = session.access_token;
 
       const response = await axios.post(
-        "http://localhost:8080/generate",
+        import.meta.env.VITE_BE_URL!,
         { prompt, style },
         {
           headers: {

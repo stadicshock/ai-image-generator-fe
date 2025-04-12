@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
-// const supabase = createClient(
-//   'https://okwkocbowyrkgucbedtt.supabase.co',
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rd2tvY2Jvd3lya2d1Y2JlZHR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwNDEyMzIsImV4cCI6MjA1OTYxNzIzMn0.HtIRxWlb8aiiWOndx-mq7wL9gjrKbxa0bIFE5p69_ps'
-// );
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL!,
   import.meta.env.VITE_SUPABASE_ANON_KEY!
@@ -38,7 +34,7 @@ function App() {
     const session = await supabase.auth.getSession();
     const token = session.data.session?.access_token;
 
-    const res = await fetch("http://localhost:8080/generate", {
+    const res = await fetch(import.meta.env.VITE_BE_URL!, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
